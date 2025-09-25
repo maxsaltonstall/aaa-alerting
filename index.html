@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Summary: Modern Observability</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles & Datadog Color Scheme -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* A very light gray for the background */
+            color: #39424e;
+        }
+        /* Define Datadog-inspired colors as CSS variables for easy use */
+        :root {
+            --dd-purple: #632ca6;
+            --dd-purple-dark: #4f2385;
+            --dd-orange: #ff6900;
+            --dd-light-gray: #f5f5f5;
+            --dd-text: #39424e;
+            --dd-border: #e0e0e0;
+        }
+        .bg-dd-purple { background-color: var(--dd-purple); }
+        .text-dd-orange { color: var(--dd-orange); }
+        .border-dd-orange { border-color: var(--dd-orange); }
+        .hover\:bg-dd-purple-dark:hover { background-color: var(--dd-purple-dark); }
+        
+        /* Custom styles for the accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px; /* Adjust as needed */
+        }
+        .accordion-item .icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-dd-purple text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                <h1 class="text-2xl font-bold">Observability Insights</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#summary" class="hover:text-dd-orange transition-colors">Summary</a>
+                <a href="#takeaways" class="hover:text-dd-orange transition-colors">Key Takeaways</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Presentation Summary Section -->
+        <section id="summary" class="mb-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="text-sm font-semibold text-dd-purple uppercase tracking-wider">Presentation Summary</span>
+                <h2 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">Modern Observability for Distributed Systems</h2>
+                <p class="mt-6 text-lg text-gray-600 leading-relaxed">
+                    This session provided a deep dive into the evolution from traditional monitoring to modern observability. We explored why today's complex, distributed architectures demand a more proactive and insightful approach to system health. For early-career engineers, mastering these concepts is crucial for building resilient, performant, and debuggable applications. The talk focused on the three pillars of observability—logs, metrics, and traces—and emphasized how their integration provides the context needed to truly understand system behavior, not just observe its symptoms.
+                </p>
+            </div>
+        </section>
+
+        <!-- Key Takeaways Section -->
+        <section id="takeaways">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <h3 class="text-3xl font-bold text-gray-800">Key Takeaways for Engineers</h3>
+                    <p class="mt-2 text-gray-600">Click on each point to expand and see why it matters.</p>
+                </div>
+                
+                <!-- Accordion container -->
+                <div id="accordion-container" class="space-y-4">
+
+                    <!-- Accordion Item 1 -->
+                    <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
+                            <span class="text-lg font-semibold text-dd-purple">1. Observability Is More Than Monitoring</span>
+                            <span class="icon">
+                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-5 pt-0 text-gray-600">
+                                <p><strong>Monitoring</strong> tells you *when* something is wrong (e.g., CPU is at 90%). <strong>Observability</strong> lets you ask *why* it's wrong by exploring the system's state. It's the difference between having a fixed dashboard of known failure states and having the tools to investigate unknown, novel problems—which are common in microservices.</p>
+                                <p class="mt-3 font-medium"><strong>Your Action:</strong> Shift your mindset from "Is the system up?" to "Can I understand what the system is doing right now?"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 2 -->
+                    <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
+                            <span class="text-lg font-semibold text-dd-purple">2. The Three Pillars Are Interconnected</span>
+                            <span class="icon">
+                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-5 pt-0 text-gray-600">
+                                <p>Logs, metrics, and traces are powerful, but their true value is unlocked when they are linked together. A spike in a metric (like error rate) should lead you directly to the traces representing those failed requests, which in turn should link to the specific logs containing the error details.</p>
+                                <p class="mt-3 font-medium"><strong>Your Action:</strong> When instrumenting code, ensure you're adding metadata (like `trace_id` and `span_id`) to your logs so your tools can automatically correlate these signals.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accordion Item 3 -->
+                    <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
+                            <span class="text-lg font-semibold text-dd-purple">3. Embrace Structured Logging</span>
+                            <span class="icon">
+                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-5 pt-0 text-gray-600">
+                                <p>Plain text logs like `"User 123 failed to update profile"` are hard to query and analyze at scale. Structured logs (e.g., JSON format) like `{"event": "profile_update_failed", "user_id": 123, "reason": "db_timeout"}` turn your logs into a rich, queryable dataset. You can easily filter, aggregate, and create metrics from them.</p>
+                                <p class="mt-3 font-medium"><strong>Your Action:</strong> Use a logging library that supports structured output by default. Always log key-value pairs instead of embedding variables in strings.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 4 -->
+                    <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
+                            <span class="text-lg font-semibold text-dd-purple">4. Context Is the Key to Debugging</span>
+                            <span class="icon">
+                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-5 pt-0 text-gray-600">
+                                <p>An isolated error log is just noise. An error log with context—like the user ID, request trace, application version, and host environment—is an actionable insight. Distributed tracing is the ultimate tool for providing this context, showing the full journey of a request as it travels through multiple services.</p>
+                                <p class="mt-3 font-medium"><strong>Your Action:</strong> Propagate context (like trace headers) across all service calls. Enrich your logs and metrics with meaningful tags and attributes that will help you slice and dice the data later.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Observability Insights. A conceptual summary for educational purposes.</p>
+            <p class="text-sm text-gray-400 mt-2">Built with Tailwind CSS. Branding inspired by Datadog.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for dynamic accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionContainer = document.getElementById('accordion-container');
+            
+            accordionContainer.addEventListener('click', function(event) {
+                const header = event.target.closest('.accordion-header');
+                
+                if (!header) return;
+
+                const item = header.parentElement;
+                const wasActive = item.classList.contains('active');
+
+                // Optional: Close all other items
+                // This makes it a true accordion where only one item is open at a time
+                // Comment this out if you want to allow multiple items to be open
+                const allItems = accordionContainer.querySelectorAll('.accordion-item');
+                allItems.forEach(i => {
+                    if (i !== item) {
+                        i.classList.remove('active');
+                    }
+                });
+                
+                // Toggle the clicked item
+                if (wasActive) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
