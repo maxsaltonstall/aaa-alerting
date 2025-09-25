@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentation Summary: Modern Observability</title>
+    <title>O11y Unlocked: Presentation Summary</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Custom Styles & Datadog Color Scheme -->
     <style>
         body {
@@ -22,6 +22,7 @@
             --dd-purple: #632ca6;
             --dd-purple-dark: #4f2385;
             --dd-orange: #ff6900;
+            --dd-orange-dark: #e05a00;
             --dd-light-gray: #f5f5f5;
             --dd-text: #39424e;
             --dd-border: #e0e0e0;
@@ -30,15 +31,17 @@
         .text-dd-orange { color: var(--dd-orange); }
         .border-dd-orange { border-color: var(--dd-orange); }
         .hover\:bg-dd-purple-dark:hover { background-color: var(--dd-purple-dark); }
+        .bg-dd-orange { background-color: var(--dd-orange); }
+        .hover\:bg-dd-orange-dark:hover { background-color: var(--dd-orange-dark); }
         
         /* Custom styles for the accordion */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-in-out;
+            transition: max-height 0.5s ease-in-out;
         }
         .accordion-item.active .accordion-content {
-            max-height: 500px; /* Adjust as needed */
+            max-height: 800px; /* Increased max-height for longer content */
         }
         .accordion-item .icon {
             transition: transform 0.3s ease;
@@ -46,20 +49,31 @@
         .accordion-item.active .icon {
             transform: rotate(180deg);
         }
+        /* Highlight for code blocks */
+        pre {
+            background-color: #f0f0f0;
+            border-left: 4px solid var(--dd-orange);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header Section -->
-    <header class="bg-dd-purple text-white shadow-lg">
+    <header class="bg-dd-purple text-white shadow-lg sticky top-0 z-10">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                <h1 class="text-2xl font-bold">Observability Insights</h1>
+                <h1 class="text-2xl font-bold">O11y Unlocked: Taming the Chaos</h1>
             </div>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#summary" class="hover:text-dd-orange transition-colors">Summary</a>
-                <a href="#takeaways" class="hover:text-dd-orange transition-colors">Key Takeaways</a>
+            <nav class="hidden md:flex space-x-6 text-sm font-semibold">
+                <a href="#summary" class="hover:text-dd-orange transition-colors">The Gist</a>
+                <a href="#takeaways" class="hover:text-dd-orange transition-colors">Cheat Sheet</a>
+                <a href="#career" class="hover:text-dd-orange transition-colors">Career Boost</a>
             </nav>
         </div>
     </header>
@@ -68,119 +82,157 @@
     <main class="container mx-auto px-6 py-12">
 
         <!-- Presentation Summary Section -->
-        <section id="summary" class="mb-16">
+        <section id="summary" class="mb-20 pt-12">
             <div class="max-w-4xl mx-auto text-center">
-                <span class="text-sm font-semibold text-dd-purple uppercase tracking-wider">Presentation Summary</span>
-                <h2 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">Modern Observability for Distributed Systems</h2>
+                <span class="text-sm font-semibold text-dd-purple uppercase tracking-wider">The Gist in 60 Seconds</span>
+                <h2 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">From "Is It Broken?" to "Why Is It Slow?": A Crash Course</h2>
                 <p class="mt-6 text-lg text-gray-600 leading-relaxed">
-                    This session provided a deep dive into the evolution from traditional monitoring to modern observability. We explored why today's complex, distributed architectures demand a more proactive and insightful approach to system health. For early-career engineers, mastering these concepts is crucial for building resilient, performant, and debuggable applications. The talk focused on the three pillars of observability—logs, metrics, and traces—and emphasized how their integration provides the context needed to truly understand system behavior, not just observe its symptoms.
+                    Let's be real: nobody enjoys a 3 AM pager alert for a mystery problem. This session was all about upgrading your toolkit from basic monitoring (the "is it on fire?" check) to true observability (the "where's the smoke coming from, what's the accelerant, and who left the toaster on?" investigation). We dove into the three pillars—logs, metrics, and traces—and showed how weaving them together turns you from a system janitor into a system detective. For you, the next generation of engineers, this isn't just a "nice to have"; it's the core skill for building software that doesn't wake you up at night.
                 </p>
             </div>
         </section>
 
         <!-- Key Takeaways Section -->
-        <section id="takeaways">
+        <section id="takeaways" class="mb-20 pt-12">
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-10">
-                    <h3 class="text-3xl font-bold text-gray-800">Key Takeaways for Engineers</h3>
-                    <p class="mt-2 text-gray-600">Click on each point to expand and see why it matters.</p>
+                    <h3 class="text-3xl font-bold text-gray-800">Your Cheat Sheet: The "Aha!" Moments</h3>
+                    <p class="mt-2 text-gray-600">The key stuff you'll actually use. Click to unpack.</p>
                 </div>
                 
-                <!-- Accordion container -->
                 <div id="accordion-container" class="space-y-4">
 
                     <!-- Accordion Item 1 -->
                     <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
                         <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                            <span class="text-lg font-semibold text-dd-purple">1. Observability Is More Than Monitoring</span>
-                            <span class="icon">
-                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </span>
+                            <span class="flex items-center text-lg font-semibold text-dd-purple"><span class="text-dd-orange font-extrabold mr-3">1.</span> Monitoring Is a Smoke Alarm, Observability Is the CCTV Footage</span>
+                            <span class="icon"><svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                         </button>
-                        <div class="accordion-content">
-                            <div class="p-5 pt-0 text-gray-600">
-                                <p><strong>Monitoring</strong> tells you *when* something is wrong (e.g., CPU is at 90%). <strong>Observability</strong> lets you ask *why* it's wrong by exploring the system's state. It's the difference between having a fixed dashboard of known failure states and having the tools to investigate unknown, novel problems—which are common in microservices.</p>
-                                <p class="mt-3 font-medium"><strong>Your Action:</strong> Shift your mindset from "Is the system up?" to "Can I understand what the system is doing right now?"</p>
-                            </div>
-                        </div>
+                        <div class="accordion-content"><div class="p-5 pt-0 text-gray-600">
+                            <p>Your classic monitoring setup is great at screaming 'FIRE!' when a server's CPU hits 90%. That's its job. But it can't tell you *what* started the fire. Observability gives you the high-fidelity footage, in slow-motion, with expert commentary. It's the power to ask new questions about your system *without* having to ship new code. In a world of chaotic microservices, you're not just fighting known dragons; you're exploring uncharted territory.</p>
+                            <p class="mt-3 font-medium text-gray-800"><strong>Your Action:</strong> Stop just building dashboards for "known unknowns." Start demanding tools that let you explore the "unknown unknowns."</p>
+                        </div></div>
                     </div>
 
                     <!-- Accordion Item 2 -->
                     <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
                         <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                            <span class="text-lg font-semibold text-dd-purple">2. The Three Pillars Are Interconnected</span>
-                            <span class="icon">
-                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </span>
+                            <span class="flex items-center text-lg font-semibold text-dd-purple"><span class="text-dd-orange font-extrabold mr-3">2.</span> Logs, Metrics & Traces: The Three Musketeers</span>
+                             <span class="icon"><svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                         </button>
-                        <div class="accordion-content">
-                            <div class="p-5 pt-0 text-gray-600">
-                                <p>Logs, metrics, and traces are powerful, but their true value is unlocked when they are linked together. A spike in a metric (like error rate) should lead you directly to the traces representing those failed requests, which in turn should link to the specific logs containing the error details.</p>
-                                <p class="mt-3 font-medium"><strong>Your Action:</strong> When instrumenting code, ensure you're adding metadata (like `trace_id` and `span_id`) to your logs so your tools can automatically correlate these signals.</p>
-                            </div>
-                        </div>
+                        <div class="accordion-content"><div class="p-5 pt-0 text-gray-600">
+                            <p>These three aren't solo artists; they're a supergroup. A spike in your <strong class="text-dd-purple">metrics</strong> (e.g., `checkout_errors` skyrockets) is your call to action. You then pivot to <strong class="text-dd-purple">traces</strong> to find an example of a failed checkout, seeing the exact path it took through 5 different services. The failing service's span in the trace then links you directly to the juicy <strong class="text-dd-purple">logs</strong>, complete with a stack trace and the exact `user_id` that was affected. One for all, and all for one!</p>
+                             <p class="mt-3 font-medium text-gray-800"><strong>Your Action:</strong> Your new mantra: "Correlate everything!" Make sure your `trace_id` is in every log line associated with that request. Your future, sleep-deprived self will thank you.</p>
+                        </div></div>
                     </div>
                     
                     <!-- Accordion Item 3 -->
                     <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
                         <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                            <span class="text-lg font-semibold text-dd-purple">3. Embrace Structured Logging</span>
-                            <span class="icon">
-                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </span>
+                            <span class="flex items-center text-lg font-semibold text-dd-purple"><span class="text-dd-orange font-extrabold mr-3">3.</span> Structured Logs: Stop Writing Novels, Start Shipping Data</span>
+                             <span class="icon"><svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                         </button>
-                        <div class="accordion-content">
-                            <div class="p-5 pt-0 text-gray-600">
-                                <p>Plain text logs like `"User 123 failed to update profile"` are hard to query and analyze at scale. Structured logs (e.g., JSON format) like `{"event": "profile_update_failed", "user_id": 123, "reason": "db_timeout"}` turn your logs into a rich, queryable dataset. You can easily filter, aggregate, and create metrics from them.</p>
-                                <p class="mt-3 font-medium"><strong>Your Action:</strong> Use a logging library that supports structured output by default. Always log key-value pairs instead of embedding variables in strings.</p>
-                            </div>
-                        </div>
+                        <div class="accordion-content"><div class="p-5 pt-0 text-gray-600">
+                            <p>Why did the developer go broke? Because he used up all his cache. Bad jokes aside, unstructured logs are a money pit of wasted time. Trying to `grep` through terabytes of plain text is a nightmare. Structured logs (like JSON) transform your logs from messy prose into a queryable database. They're machine-readable and human-friendly.</p>
+                            <pre class="mt-3"><code>// Bad: A string that's hard to parse
+"User 123 failed to update profile picture due to timeout."
+
+// Good: A rich, queryable object
+{
+  "message": "Profile picture update failed",
+  "event": "profile_update_failure",
+  "user_id": 123,
+  "reason": "db_timeout",
+  "latency_ms": 5034
+}</code></pre>
+                             <p class="mt-3 font-medium text-gray-800"><strong>Your Action:</strong> Install a logging library that does this for you. Your first log statement should be `logger.info({ 'event': 'service_started', 'version': '1.2.3' })`, not `logger.info('Service started version 1.2.3')`.</p>
+                        </div></div>
                     </div>
 
                     <!-- Accordion Item 4 -->
                     <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
                         <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
-                            <span class="text-lg font-semibold text-dd-purple">4. Context Is the Key to Debugging</span>
-                            <span class="icon">
-                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </span>
+                             <span class="flex items-center text-lg font-semibold text-dd-purple"><span class="text-dd-orange font-extrabold mr-3">4.</span> Context is King (and Queen, and the Entire Royal Court)</span>
+                             <span class="icon"><svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
                         </button>
-                        <div class="accordion-content">
-                            <div class="p-5 pt-0 text-gray-600">
-                                <p>An isolated error log is just noise. An error log with context—like the user ID, request trace, application version, and host environment—is an actionable insight. Distributed tracing is the ultimate tool for providing this context, showing the full journey of a request as it travels through multiple services.</p>
-                                <p class="mt-3 font-medium"><strong>Your Action:</strong> Propagate context (like trace headers) across all service calls. Enrich your logs and metrics with meaningful tags and attributes that will help you slice and dice the data later.</p>
-                            </div>
-                        </div>
+                        <div class="accordion-content"><div class="p-5 pt-0 text-gray-600">
+                            <p>An error message `'NullPointerException'` is as useful as a screen door on a submarine. But an error message with <strong class="text-dd-purple">context</strong>—`'NullPointerException' for user_id: 456 during payment_processing, trace_id: abc-123, on pod: checkout-svc-xyz789`—is a treasure map leading directly to the buried treasure (or, you know, the bug). Distributed tracing is the magic that carries this context "passport" as a request travels between services.</p>
+                             <p class="mt-3 font-medium text-gray-800"><strong>Your Action:</strong> Instrument your services with OpenTelemetry. Ensure HTTP headers for tracing are passed along at every network hop. No context left behind!</p>
+                        </div></div>
+                    </div>
+                    
+                    <!-- Accordion Item 5 -->
+                    <div class="accordion-item bg-white border border-dd-border rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-5 focus:outline-none">
+                             <span class="flex items-center text-lg font-semibold text-dd-purple"><span class="text-dd-orange font-extrabold mr-3">5.</span> Observability-Driven Development (ODD) is the New TDD</span>
+                             <span class="icon"><svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>
+                        </button>
+                        <div class="accordion-content"><div class="p-5 pt-0 text-gray-600">
+                             <p>Don't wait for your code to be on fire in production to think about how you'll debug it. ODD means asking "How will I know if this is working?" and "How will I debug this when it inevitably breaks?" *before you even write the feature code*. It's about building instrumentation in from day one, making your features observable by design.</p>
+                             <p class="mt-3 font-medium text-gray-800"><strong>Your Action:</strong> On your next feature ticket, add subtasks: "Add metric for success/failure rate," "Add trace spans for key operations," and "Add structured logs for important state changes."</p>
+                        </div></div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Career Impact Section -->
+        <section id="career" class="py-20 bg-white pt-12">
+            <div class="max-w-5xl mx-auto text-center px-6">
+                <h3 class="text-3xl font-bold text-gray-800">Level Up: How This Makes You a Better Engineer</h3>
+                <p class="mt-2 text-gray-600 mb-12">This isn't just theory. Mastering o11y is a career superpower.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="p-8 border border-dd-border rounded-lg shadow-lg">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-dd-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">Become a Debugging Superhero</h4>
+                        <p class="text-gray-600">You'll be the one who can solve complex, cross-service issues in minutes, not days. That's how you build a reputation as a go-to problem solver.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="p-8 border border-dd-border rounded-lg shadow-lg">
+                         <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-dd-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">Ship With Confidence</h4>
+                        <p class="text-gray-600">Good instrumentation is your safety net. It gives you and your team the confidence to deploy more frequently and innovate faster without fearing the inevitable bug.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="p-8 border border-dd-border rounded-lg shadow-lg">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-dd-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">Think in Systems</h4>
+                        <p class="text-gray-600">You'll develop a deep understanding of how the entire architecture fits together, not just your corner of it. This is how you grow into a senior or staff engineer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-16">
+    <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Observability Insights. A conceptual summary for educational purposes.</p>
+            <p>&copy; 2025 O11y Unlocked. A conceptual summary for educational purposes.</p>
             <p class="text-sm text-gray-400 mt-2">Built with Tailwind CSS. Branding inspired by Datadog.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for dynamic accordion -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const accordionContainer = document.getElementById('accordion-container');
             
             accordionContainer.addEventListener('click', function(event) {
                 const header = event.target.closest('.accordion-header');
-                
                 if (!header) return;
 
                 const item = header.parentElement;
                 const wasActive = item.classList.contains('active');
 
-                // Optional: Close all other items
-                // This makes it a true accordion where only one item is open at a time
-                // Comment this out if you want to allow multiple items to be open
+                // This code makes it a true accordion, where only one item is open at a time.
+                // If you want to allow multiple items to be open, comment out this forEach loop.
                 const allItems = accordionContainer.querySelectorAll('.accordion-item');
                 allItems.forEach(i => {
                     if (i !== item) {
@@ -188,7 +240,7 @@
                     }
                 });
                 
-                // Toggle the clicked item
+                // Toggle the clicked item's state.
                 if (wasActive) {
                     item.classList.remove('active');
                 } else {
@@ -200,3 +252,4 @@
 
 </body>
 </html>
+
